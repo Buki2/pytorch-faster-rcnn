@@ -240,7 +240,8 @@ class Network(nn.Module):
             rpn)  # batch * (num_anchors * 2) * h * w
 
         # change it so that the score has 2 as its channel size
-        rpn_cls_score_reshape = rpn_cls_score.view(
+        # rpn_cls_score_reshape = rpn_cls_score.view(
+        rpn_cls_score_reshape = rpn_cls_score.reshape(
             1, 2, -1,
             rpn_cls_score.size()[-1])  # batch * 2 * (num_anchors*h) * w
         rpn_cls_prob_reshape = F.softmax(rpn_cls_score_reshape, dim=1)

@@ -117,8 +117,9 @@ class resnetv1(Network):
         return net_conv
 
     def _head_to_tail(self, pool5):
-        fc7 = self.resnet.layer4(pool5).mean(3).mean(
-            2)  # average pooling after layer4
+        # fc7 = self.resnet.layer4(pool5).mean(3).mean(
+        #     2)  # average pooling after layer4
+        fc7 = self.resnet.layer4(pool5)
         return fc7
 
     def _init_head_tail(self):
